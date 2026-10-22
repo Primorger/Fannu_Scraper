@@ -1,0 +1,41 @@
+{
+  "urls": [
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0000156",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002045",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002046",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002052",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002065",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002087",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002051",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002015",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002017",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0000241",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0000152",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0000242",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0000271",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002018",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0000273",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002067",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0000237",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002041",
+    "https://natura2000.eea.europa.eu/Natura2000/sdf/#/sdf?site=BG0002096"
+  ],
+
+  "needed_animals": [
+    "A060",
+    "A059",
+    "A021",
+    "A875",
+    "A032",
+    "A034",
+    "A024",
+    "A023",
+    "A029",
+    "A026",
+    "A132",
+    "A863",
+    "A030",
+    "A073",
+    "A339"
+  ]
+}
