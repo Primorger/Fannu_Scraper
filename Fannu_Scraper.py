@@ -43,20 +43,12 @@ def load_config(path: Path) -> tuple[list[str], set[str]]:
         config = json.load(input_file)
 
     if not isinstance(config, dict):
-        raise ValueError("The input JSON must contain an object.")
+        raise ValueError
 
     urls = config.get("urls")
     needed_animals = config.get("needed_animals")
-    if not isinstance(urls, list) or not all(
-        isinstance(url, str) for url in urls
-    ):
-        raise ValueError('"urls" must be a list of URL strings.')
-    if not isinstance(needed_animals, list) or not all(
-        isinstance(code, str) for code in needed_animals
-    ):
-        raise ValueError('"needed_animals" must be a list of species codes.')
-    if not urls:
-        raise ValueError('"urls" must contain at least one URL.')
+    if not isinstance(urls, list) or not isinstance(needed_animals, list):
+        raise ValueError
 
     return urls, set(needed_animals)
 
@@ -68,7 +60,7 @@ def get_site_code(url: str) -> str:
         fragment_query
     ).get("site")
     if not site_codes or not site_codes[0]:
-        raise ValueError(f"URL does not contain a site code: {url}")
+        raise ValueError
     return site_codes[0]
 
 
@@ -86,10 +78,7 @@ def get_api_data(
 
     payload = response.json()
     if not isinstance(payload, dict) or not payload.get("Success"):
-        message = payload.get("Message", "Unexpected API response.") if isinstance(
-            payload, dict
-        ) else "Unexpected API response."
-        raise RuntimeError(f"{endpoint} request failed: {message}")
+        raise RuntimeError
     return payload
 
 
@@ -105,7 +94,7 @@ def fetch_species(
     )
     release_id = release_payload.get("Data")
     if not isinstance(release_id, int):
-        raise ValueError(f"No latest release ID returned for {site_code}.")
+        raise ValueError
 
     data_payload = get_api_data(
         session,
@@ -122,7 +111,7 @@ def fetch_species(
         else None
     )
     if not isinstance(species, list):
-        raise ValueError(f"No species list returned for {site_code}.")
+        raise ValueError
     return species
 
 
@@ -153,7 +142,7 @@ def write_workbook(output_lines: list[str], path: Path) -> None:
     workbook = Workbook()
     sheet = workbook.active
     if sheet is None:
-        raise RuntimeError("Could not create the output worksheet.")
+        raise RuntimeError
     sheet.title = "Species"
     header_row = 2
 
@@ -164,9 +153,7 @@ def write_workbook(output_lines: list[str], path: Path) -> None:
     for row_number, line in enumerate(output_lines, start=header_row + 1):
         values = line.split("&")
         if len(values) != len(HEADERS):
-            raise ValueError(
-                f"Expected {len(HEADERS)} cells in output row, got {len(values)}."
-            )
+            raise ValueError
         for column, value in enumerate(values, start=1):
             if column in (8, 9) and value:
                 value = float(value) if "." in value else int(value)
@@ -201,6 +188,7 @@ def main() -> None:
             print(f"{site_code}: found {len(site_lines)} matching rows")
 
     write_workbook(output_lines, OUTPUT_PATH)
+    print(output_lines)
     print(f"Wrote {len(output_lines)} rows to {OUTPUT_PATH}")
 
 
